@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="description" content="コーダーや開発者のための優しいSNS ログインページ"/>
+    <title>紅茶</title>
+    <link rel="stylesheet" href="style.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
+    <style>
+      body {
+        position: absolute;
+        right: 50px;
+        font-family: "M PLUS Rounded 1c", sans-serif;
+      }
+
+      .container {
+        padding: 20px;
+        max-width: 1000px;
+      }
+      body {
+        font-family: "M PLUS Rounded 1c", sans-serif;
+      }
+      img {
+        float: left;
+
+        height: auto;
+        margin-right: 20px;
+      }
+    </style>
+  </head>
+  <body>
+
+
+    <img src="./IMG/samplesize.png" alt="画像Aサンプル">
+
+    <div class="container" style=font-size:30px>
+      <h1>ログインページ</h1>
+      <div class="post-card" style="   font-size:20px; position: absolute;  top:300px;">
+        <form action="/submit" method="post">
+          <label for="name">名前 name：</label>
+          <input type="text" id="name" name="name"/><br/><br/>
+
+          <label for="password">パスワード pass：</label>
+          <input type="password" id="password" name="password"/><br/><br/>
+
+          <button type="submit">LOGIN!!</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
