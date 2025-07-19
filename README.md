@@ -1,4 +1,4 @@
-# 紅茶 SNS
+ # 紅茶 SNS
 
 チャット機能を備えたシンプルなSNSです。Node.jsとExpressでサーバーを立てています。
 
@@ -17,6 +17,5 @@ node server.js
 ```
 ## 使用ライブラリ
 
-- [Materialize CSS](https://materializecss.com/) - MIT License
-
+https://getbootstrap.jp/docs/5.3/getting-started/introduction/ ありがとう!! boostrap感謝~
 ありがとう!! google fonts!!
