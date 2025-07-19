@@ -15,7 +15,7 @@ body {
 /* 左メニュー（Discord風） */
 .sidebar {
   width: 80px;
-  background-color: #2f3136;
+  background-color: #9a5b4c;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -35,11 +35,11 @@ body {
   flex: 1;
   overflow-y: auto;
   padding: 20px;
-  background-color: #2b2d42;
+  background-color: #f4e2c3;
 }
 
 .post-card {
-  background-color: #3a3f5c;
+  background-color: #fdd9b4;
   padding: 15px;
   border-radius: 10px;
   margin-bottom: 20px;
@@ -50,17 +50,19 @@ body {
 }
 
 .code-block {
-  background-color: #1e1e2f;
+  background-color: white;
   padding: 10px;
   border-radius: 5px;
   font-family: monospace;
   white-space: pre-wrap;
+  color: black;
+
 }
 
 .edit-btn {
   margin-top: 10px;
   display: inline-block;
-  background-color: #5865f2;
+  background-color: #f2c7a6;
   color: white;
   padding: 5px 10px;
   border-radius: 5px;
