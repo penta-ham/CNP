@@ -17,5 +17,5 @@ node server.js
 ```
 ## 使用ライブラリ
 
-https://getbootstrap.jp/docs/5.3/getting-started/introduction/ ありがとう!! boostrap感謝~
+ありがとう!!ブルマ!!
 ありがとう!! google fonts!!
