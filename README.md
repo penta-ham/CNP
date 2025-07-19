@@ -18,3 +18,6 @@ node server.js
 ## 使用ライブラリ
 
 - [Materialize CSS](https://materializecss.com/) - MIT License
+
+ありがとう!! materialize !!
+ありがとう!! google fonts!!
