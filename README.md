@@ -1,5 +1,7 @@
 #cotya
-
+[![ライセンス: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Node.js](https://img.shields.io/badge/Node.js-%3E=18.0.0-brightgreen.svg)](https://nodejs.org/)
+[![開発中](https://img.shields.io/badge/Status-開発中-orange)](#)
 
 
 概要
