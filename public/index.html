@@ -1,43 +1,116 @@
 <!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>テスト</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>紅茶チャット</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css"
+    />
+  </head>
+  <body>
+    <!-- サイドmenu -->
+    <div class="columns">
+      <div
+        class="column is-one-fifth has-background-light"
+        style="height: 100vh; position: fixed; top: 0; left: 0; overflow-y: auto"
+      >
+        <aside class="menu p-4" style="height: 100%">
+          <p class="menu-label">メニュー</p>
+          <ul class="menu-list block">
+            <li><a class="is-active ">ホーム</a></li>
+            <li><a>チャット</a></li>
+            <li><a>プロフィール</a></li>
+            <li><a>設定</a></li>
+          </ul>
+          <!-- ここからDMやねん（笑） -->
+          <div class="box">
 
-  <!-- サイドバー -->
-  <div class="sidebar">
-    <div class="sidebar-icon"></div>
-    <div class="sidebar-icon"></div>
-    <div class="sidebar-icon"></div>
-  </div>
 
-  <!-- メインフィード -->
-  <div class="main">
-    <!-- 投稿カード1 -->
-    <div class="post-card">
-      <h3>投稿タイトル 1</h3>
-      <p>これはサンプルの投稿内容です。</p>
-      <div class="code-block">
-        console.log("Hello, world!");
+        </aside>
       </div>
-      <button class="edit-btn">編集</button>
+      <!-- サイドメニュー終わり-->
+      <div class="column" style="margin-left: 20%">
+        <section id="login-section" class="section">
+          <h1 class="title">ようこそ！</h1>
+          <div class="field">
+            <label class="label">ユーザー名を入力してください：</label>
+            <div class="control">
+              <input
+                id="username"
+                class="input"
+                type="text"
+                placeholder="例: penta"
+                autocomplete="off"
+              />
+            </div>
+          </div>
+          <button id="enterChat" class="button is-primary mt-2">入室</button>
+        </section>
+
+        <section id="chat-section" class="section" style="display:none;">
+          <h2 class="title is-4">チャットルーム</h2>
+          <div
+            id="messages"
+            class="box"
+            style="height: 300px; overflow-y: auto; padding: 1rem;"
+          ></div>
+          <form id="chat-form" class="field has-addons mt-3">
+            <div class="control is-expanded">
+              <input
+                id="message-input"
+                class="input"
+                autocomplete="off"
+                placeholder="メッセージを入力..."
+              />
+            </div>
+            <div class="control">
+              <button class="button is-info" type="submit">送信</button>
+            </div>
+          </form>
+        </section>
+      </div>
     </div>
 
-    <!-- 投稿カード2 -->
-    <div class="post-card">
-      <h3>サンプルなんやねん</h3>
-      <p>もう一つのサンプル投稿です。</p>
-      <div class="code-block">
-        const sum = (a, b) => a + b;
-      </div>
-      <button class="edit-btn">編集</button>
-    </div>
-  </div>
+    <!-- Socket.IO -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      const socket = io();
+      const loginSection = document.getElementById("login-section");
+      const chatSection = document.getElementById("chat-section");
+      const enterChat = document.getElementById("enterChat");
+      const usernameInput = document.getElementById("username");
+      const chatForm = document.getElementById("chat-form");
+      const messageInput = document.getElementById("message-input");
+      const messages = document.getElementById("messages");
 
-</body>
+      let username = "";
+
+      enterChat.addEventListener("click", () => {
+        const name = usernameInput.value.trim();
+        if (name) {
+          username = name;
+          loginSection.style.display = "none";
+          chatSection.style.display = "block";
+        }
+      });
+
+      chatForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        if (messageInput.value.trim()) {
+          const msg = { user: username, text: messageInput.value };
+          socket.emit("chat message", msg);
+          messageInput.value = "";
+        }
+      });
+
+      socket.on("chat message", (msg) => {
+        const item = document.createElement("div");
+        item.innerHTML = `<strong>${msg.user}</strong>: ${msg.text}`;
+        messages.appendChild(item);
+        messages.scrollTop = messages.scrollHeight;
+      });
+    </script>
+  </body>
 </html>
