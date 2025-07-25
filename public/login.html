@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="ja">
   <head>
-    <meta charset="UTF-8"/>
-    <meta name="description" content="コーダーや開発者のための優しいSNS ログインページ"/>
+    <meta charset="UTF-8" />
+    <meta name="description" content="コーダーや開発者のための優しいSNS ログインページ" />
     <title>紅茶</title>
+    <!-- Bulma CDN -->
     <link
       rel="stylesheet"
-      href="style.css"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
     />
-    <link rel="preconnect" href="https://fonts.googleapis.com"/>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap"
       rel="stylesheet"
@@ -17,124 +18,94 @@
     <style>
       body {
         font-family: 'M PLUS Rounded 1c', sans-serif;
-        margin: 0;
-        padding: 20px;
         background-color: #f4e2c3;
+        padding: 2rem;
       }
 
-      .children {
-        display: flex;
-        align-items: flex-start;
-        gap: 40px; /* 画像と右側コンテンツの間隔 */
+      .container {
         max-width: 900px;
-        margin: 0 auto; /* 横中央寄せ */
       }
 
-      img {
-        left: 30％;
-        width: 1500px;
-        height: auto;
+      .image-rotated {
+        transform: rotate(-25deg);
         border-radius: 8px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        flex-shrink: 0;
-        transform: rotate(-25deg);
-
+        max-width: 100%;
+        height: auto;
       }
 
-
-      .right-container {
-        position: absolute;
-        min-width: 550px;
-        display: flex;
-        flex-direction: column;
-        left: 70%;
-      }
-
-      h1 {
-        font-size: 36px;
-        margin: 1px 10px 20px 0;
+      h1.title {
         text-align: right;
         color: #333;
-        padding: 15px;
       }
 
-
-      .post-card {
-        background-color: #fff;
-        padding: 30px 25px;
-        border-radius: 10px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        font-size: 18px;
-      }
-
-      .post-card label {
-        display: block;
-        margin-bottom: 6px;
-        font-weight: 600;
-        color: #555;
-      }
-
-      .post-card input {
-        width: 100%;
-        padding: 10px 12px;
-        font-size: 16px;
-        border: 1.8px solid #ccc;
-        border-radius: 6px;
-        transition: border-color 0.3s ease;
-      }
-
-      .post-card input:focus {
-        outline: none;
-        border-color: #7b4bdb; /* 少しおしゃれな色 */
-        box-shadow: 0 0 5px rgba(123, 75, 219, 0.5);
-      }
-
-      .post-card button {
-        margin-top: 20px;
-        width: 100%;
-        padding: 12px;
-        font-size: 18px;
-        font-weight: 700;
-        background-color: #7b4bdb;
-        border: none;
-        color: white;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-      }
-
-      .post-card button:hover {
-        background-color: #5a3490;
-      }
-      .mini-text
-      {
-        position: absolute;
-        right: 30%;
+      .mini-text {
+        text-align: right;
         color: #9a5b4c;
-        top: 15%;
-        word-break: keep-all;
-
+        margin-bottom: 1rem;
+        font-weight: 600;
       }
     </style>
   </head>
   <body>
-    <div class="parent">
-      <div class="children">
+    <div class="container">
+      <div class="columns is-vcentered is-variable is-8">
         <!-- 左側の画像 -->
-        <img src="./IMG/samplesize.png" alt="画像Aサンプル"/>
-        <!--TOPの基本テキスト-->
-        <div class="right-container">
-          <h1>ログインページ</h1>
+        <div class="column is-half">
+          <figure class="image">
+            <img
+              src="./IMG/samplesize.png"
+              alt="画像Aサンプル"
+              class="image-rotated"
+            />
+          </figure>
+        </div>
+
+        <!-- 右側コンテンツ -->
+        <div class="column is-half">
+          <h1 class="title is-3">ログインページ</h1>
           <h2 class="mini-text">タイプミスから始まった小さなsns</h2>
-          <div class="post-card">
-            <form action="/login" method="post">
-              <label for="username">名前 name：</label>
-              <input type="text" id="username" name="username" required/>
-              <label for="password" style="margin-top: 20px;">パスワード pass：</label>
-              <input type="password" id="password" name="password" required/>
-              <button type="submit">LOGIN!!</button>
-            </form>
-          </div>
+
+          <form action="/login" method="post" class="box">
+            <div class="field">
+              <label class="label" for="username">名前 name：</label>
+              <div class="control">
+                <input
+                  class="input"
+                  type="text"
+                  id="username"
+                  name="username"
+                  placeholder="ユーザー名を入力"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="label" for="password">パスワード pass：</label>
+              <div class="control">
+                <input
+                  class="input"
+                  type="password"
+                  id="password"
+                  name="password"
+                  placeholder="パスワードを入力"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="field mt-5">
+              <div class="control">
+                <button
+                  class="button is-primary is-fullwidth"
+                  type="submit"
+                >
+                  LOGIN!!
+                </button>
+              </div>
+            </div>
+          </form>
         </div>
       </div>
     </div>

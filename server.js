@@ -27,16 +27,23 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
-
+//ログインの仕組み
 app.post('/login', (req, res) => {
   const { username, password } = req.body;
-  if (users[username] && users[username] === password) {
-    res.send(`<h1>ログイン成功！ようこそ ${username} さん</h1>`);
+
+  // 既存ユーザーならログイン
+  if (users[username]) {
+    if (users[username] === password) {
+      res.send(`<h1>ログイン成功！ようこそ ${username} さん</h1>`);
+    } else {
+      res.send('<h1>パスワードが間違っています。</h1><a href="/">戻る</a>');
+    }
   } else {
-    res.send('<h1>ログイン失敗：ユーザー名またはパスワードが違います。</h1><a href="/">戻る</a>');
+    // 存在しないユーザーなら自動的に新規登録
+    users[username] = password;
+    res.send(`<h1>新規アカウントを作成しました！ようこそ ${username} さん</h1>`);
   }
 });
-
 // Socket.IOの接続イベント
 io.on('connection', (socket) => {
   console.log('ユーザー接続:', socket.id);
