@@ -10,7 +10,6 @@ const app = express();
 app.use(cors());  // 全てのオリジン（ドメイン）を許可
 
 
-const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
 
