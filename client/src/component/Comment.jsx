@@ -1,9 +1,7 @@
 import React from 'react';
 import 'bulma/css/bulma.min.css';
-import Comment from './component/Comment.jsx';
 
-
-function Message() {
+function Comment() {
   return (
     <div className="box is-flex is-align-items-start">
       {/* アイコン */}
@@ -20,4 +18,4 @@ function Message() {
   );
 }
 
-export default Message;
+export default Comment;

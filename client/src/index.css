@@ -12,8 +12,5 @@ code {
     monospace;
 }
 
-/* ここからcotya */
-.box {
-  margin: 0;
-  /* 必要に応じて padding は調整してください */
-}
+<script type="module" src="/src/main.jsx"></script>
+

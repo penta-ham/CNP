@@ -10,7 +10,7 @@ function Sidebar() {
         overflowY: 'auto',
         display: 'flex',
         flexDirection: 'column',
-        height: '100vh', // 画面の高さいっぱいにする
+        height: '100vh',
       }}
     >
       <p className="menu-label">メニュー</p>
@@ -20,8 +20,6 @@ function Sidebar() {
         <li><a href="#">プロフィール</a></li>
         <li><a href="#">設定</a></li>
       </ul>
-
-      {/* メニューの下にテキストエリアとボタン */}
       <div style={{ marginTop: '1rem' }}>
         <textarea
           className="textarea"
