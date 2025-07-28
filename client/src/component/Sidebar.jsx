@@ -6,7 +6,6 @@ function Sidebar() {
     <aside
       className="menu has-background-light"
       style={{
-        width: '20%',
         padding: '1.5rem',
         overflowY: 'auto',
         display: 'flex',
